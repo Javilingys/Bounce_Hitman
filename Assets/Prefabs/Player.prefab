@@ -914,6 +914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550028781925146}
   - component: {fileID: 2420975778909708434}
+  - component: {fileID: 1943076091}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -954,6 +955,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dfc2013de4098b4e96194872dc369c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1943076091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2547550028781925147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19b696eebc85fa6468bb56ccc565d305, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetForRotation: {fileID: 2547550028788003307}
 --- !u!1 &2547550028788003304
 GameObject:
   m_ObjectHideFlags: 0
@@ -964,9 +978,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550028788003307}
   m_Layer: 0
-  m_Name: RotationPosition
+  m_Name: RotationObject
   m_TagString: Untagged
-  m_Icon: {fileID: 4162164826716764455, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
