@@ -14,15 +14,6 @@ namespace BounceHitman.Controllers
         #region Unity Functions
         private void Awake()
         {
-            if (Application.platform == RuntimePlatform.Android)
-            {
-                inputManager = gameObject.AddComponent<MobileInputManager>();
-            }
-            else if (Application.platform == RuntimePlatform.WindowsEditor)
-            {
-                inputManager = gameObject.AddComponent<PCInputManager>();
-            }
-
             rotatorByDrag = GetComponent<RotatorByDrag>();
             aimRenderer = GetComponent<AimRenderer>();
         }
