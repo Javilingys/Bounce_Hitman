@@ -53,10 +53,10 @@ public class GameManager : MonoBehaviour
 
         stateMachine = new StateMachine();
 
-        var placeing = new PlacingState();
+        var placing = new PlacingState(this, inputManager);
         var aiming = new AimingState(this, inputManager);
 
-        stateMachine.SetState(aiming);
+        stateMachine.SetState(placing);
 
         void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
     }
