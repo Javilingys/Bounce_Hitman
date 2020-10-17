@@ -36,13 +36,44 @@ public class StateMachine
         currentState.OnEnter();
     }
 
+    public void AddTransition(IState from, IState to, Func<bool> predicate)
+    {
+        if (transitions.TryGetValue(from.GetType(), out var _transitions) == false)
+        {
+            _transitions = new List<Transition>();
+            transitions[from.GetType()] = _transitions;
+        }
+
+        _transitions.Add(new Transition(to, predicate));
+    }
+
+    public void AddAnyTransition(IState state, Func<bool> predicate)
+    {
+        anyTransitions.Add(new Transition(state, predicate));
+    }
+
     private class Transition
     {
+        public Func<bool> Conndition { get; }
+        public IState To { get; }
 
+        public Transition(IState to, Func<bool> condition)
+        {
+            To = to;
+            Conndition = condition;
+        }
     }
 
     private Transition GetTransition()
     {
+        foreach (var transition in anyTransitions)
+            if (transition.Conndition())
+                return transition;
+
+        foreach (var transition in currentTransitions)
+            if (transition.Conndition())
+                return transition;
+
         return null;
     }
 }

@@ -39,6 +39,7 @@ namespace BounceHitman.Controllers
         #endregion
 
         #region Public Functions
+       // public void 
         #endregion
 
         #region Private Functions
@@ -58,11 +59,6 @@ namespace BounceHitman.Controllers
         {
             rotatorByDrag.Rotate(touchPosition);
             aimRenderer.ClearLine();
-        }
-
-        private void RotationProcess(Vector3 targetPosition)
-        {
-            rotatorByDrag.Rotate(targetPosition);
         }
 
         private void InputListenersRegister()
