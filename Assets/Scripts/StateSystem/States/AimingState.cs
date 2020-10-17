@@ -7,8 +7,9 @@ using UnityEngine;
 public class AimingState : IState
 {
     private readonly GameManager gameManager;
-    private readonly PlayerController playerController = null;
     private readonly IInputManager inputManager;
+
+    private readonly PlayerController playerController;
 
     public AimingState(GameManager gameManager, IInputManager inputManager)
     {
@@ -22,13 +23,44 @@ public class AimingState : IState
 
     public void OnEnter()
     {
+        InputListenersRegister();
     }
 
     public void OnExit()
     {
+        InputListenersUnregister();
     }
 
     public void Tick()
     {
+    }
+
+    private void StartDragHandler(Vector3 touchPosition)
+    {
+        playerController.AimingProcess(touchPosition);
+    }
+
+    private void DraggingHandler(Vector3 touchPosition)
+    {
+        playerController.AimingProcess(touchPosition);
+    }
+
+    private void ReleaseDragHandler(Vector3 touchPosition)
+    {
+        playerController.AimingProcess(touchPosition);
+    }
+
+    private void InputListenersRegister()
+    {
+        inputManager.onStartDrag += StartDragHandler;
+        inputManager.onDragging += DraggingHandler;
+        inputManager.onReleaseDrag += ReleaseDragHandler;
+    }
+
+    private void InputListenersUnregister()
+    {
+        inputManager.onStartDrag -= StartDragHandler;
+        inputManager.onDragging += DraggingHandler;
+        inputManager.onReleaseDrag += ReleaseDragHandler;
     }
 }

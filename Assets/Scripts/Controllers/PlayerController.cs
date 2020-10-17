@@ -7,7 +7,6 @@ namespace BounceHitman.Controllers
 {
     public class PlayerController : MonoBehaviour
     {
-        private IInputManager inputManager;
         private RotatorByDrag rotatorByDrag = null;
         private AimRenderer aimRenderer = null;
 
@@ -17,54 +16,17 @@ namespace BounceHitman.Controllers
             rotatorByDrag = GetComponent<RotatorByDrag>();
             aimRenderer = GetComponent<AimRenderer>();
         }
-
-        private void OnEnable()
-        {
-            InputListenersRegister();
-        }
-
-        private void OnDisable()
-        {
-            InputListenersUnregister();
-        }
         #endregion
 
         #region Public Functions
-       // public void 
+        public void AimingProcess(Vector3 touchPosition)
+        {
+            rotatorByDrag.Rotate(touchPosition);
+            aimRenderer.SetLine();
+        }
         #endregion
 
         #region Private Functions
-        private void StartDragHandler(Vector3 touchPosition)
-        {
-            rotatorByDrag.Rotate(touchPosition);
-            aimRenderer.SetLine();
-        }
-
-        private void DraggingHandler(Vector3 touchPosition)
-        {
-            rotatorByDrag.Rotate(touchPosition);
-            aimRenderer.SetLine();
-        }
-
-        private void ReleaseDragHandler(Vector3 touchPosition)
-        {
-            rotatorByDrag.Rotate(touchPosition);
-            aimRenderer.ClearLine();
-        }
-
-        private void InputListenersRegister()
-        {
-            inputManager.onStartDrag += StartDragHandler;
-            inputManager.onDragging += DraggingHandler;
-            inputManager.onReleaseDrag += ReleaseDragHandler;
-        }
-
-        private void InputListenersUnregister()
-        {
-            inputManager.onStartDrag -= StartDragHandler;
-            inputManager.onDragging += DraggingHandler;
-            inputManager.onReleaseDrag += ReleaseDragHandler;
-        }
         #endregion
     }
 }

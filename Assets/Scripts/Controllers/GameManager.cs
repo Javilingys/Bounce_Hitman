@@ -18,13 +18,12 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-
-
     [SerializeField]
-    private PlayerController playerController = null;
+    private PlayerController playerController;
     public PlayerController PlayerController
     {
-        get; private set;
+        get => playerController;
+        private set => playerController = value;
     }
 
     private IInputManager inputManager;
@@ -57,7 +56,14 @@ public class GameManager : MonoBehaviour
         var placeing = new PlacingState();
         var aiming = new AimingState(this, inputManager);
 
+        stateMachine.SetState(aiming);
+
         void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
+    }
+
+    private void Update()
+    {
+        stateMachine.Tick();
     }
     #endregion
 
