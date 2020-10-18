@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550026893968661}
   - component: {fileID: 2547550026893968660}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L Upper Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550027120127871}
   - component: {fileID: 2547550027120127870}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R MIddle Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550027452695344}
   - component: {fileID: 2547550027452695347}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L Bottom Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550027545140651}
   - component: {fileID: 2547550027545140650}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R Upper Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -338,7 +338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550028003609141}
   - component: {fileID: 2547550028003609140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550028161699761}
   - component: {fileID: 2547550028161699760}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550028166724980}
   - component: {fileID: 2547550028166724983}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L Lower Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550028196069494}
   - component: {fileID: 2547550028196069497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sniper-rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -668,7 +668,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550028242541187}
   - component: {fileID: 2547550028242541186}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R Lower Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,7 +750,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550028448164518}
   - component: {fileID: 2547550028448164521}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R Top Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -832,7 +832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550028525260691}
   - component: {fileID: 2547550028525260690}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L Top Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -913,13 +913,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2547550028781925146}
+  - component: {fileID: 6799584717902161281}
   - component: {fileID: 3712389778476903274}
   - component: {fileID: 2420975778909708434}
   - component: {fileID: 1943076091}
   - component: {fileID: 4624728767832550459}
   - component: {fileID: 8953559145817678916}
-  - component: {fileID: 5095745321619236708}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -947,6 +947,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &6799584717902161281
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2547550028781925147}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 6
 --- !u!120 &3712389778476903274
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -1095,32 +1116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9e5b9f381b5f746834cfe20662d63f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &5095745321619236708
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2547550028781925147}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.4781332, y: -0.6899986}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 5.143816, y: 6.9039555}
-  m_EdgeRadius: 0
+  currentMinX: 0
+  currentMaxX: 0
 --- !u!1 &2547550028788003304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,7 +1127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2547550028788003307}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RotationObject
   m_TagString: Untagged
   m_Icon: {fileID: 8418204508859773708, guid: 0000000000000000d000000000000000, type: 0}
@@ -1167,7 +1164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550028845888777}
   - component: {fileID: 2547550028845888776}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: R Bottom Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1249,7 +1246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2547550028931175918}
   - component: {fileID: 2547550028931175921}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: L MIddle Leg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1330,7 +1327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2631646338093455988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Aim
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}

@@ -24,6 +24,7 @@ public class PlacingState : IState
     public void OnEnter()
     {
         InputListenersRegister();
+        gameManager.IsPlacingMode = true;
     }
 
     public void OnExit()
@@ -49,6 +50,7 @@ public class PlacingState : IState
     private void ReleaseDragHandler(Vector3 touchPosition)
     {
         playerController.PlacingProcess(touchPosition);
+        gameManager.IsPlacingMode = false;
     }
 
     private void InputListenersRegister()
@@ -61,7 +63,7 @@ public class PlacingState : IState
     private void InputListenersUnregister()
     {
         inputManager.onStartDrag -= StartDragHandler;
-        inputManager.onDragging += DraggingHandler;
-        inputManager.onReleaseDrag += ReleaseDragHandler;
+        inputManager.onDragging -= DraggingHandler;
+        inputManager.onReleaseDrag -= ReleaseDragHandler;
     }
 }

@@ -47,11 +47,12 @@ namespace BounceHitman.Player
                 RaycastHit2D hit = Physics2D.Raycast(pos, dir, laserDistance);
                 if (hit)
                 {
-                    countLaser++;
-                    laserRenderer.positionCount = countLaser;
-                    dir = Vector3.Reflect(dir, hit.normal);
-                    pos = (Vector2)dir.normalized + hit.point;
-                    laserRenderer.SetPosition(countLaser - 1, hit.point);
+                     countLaser++;
+                     laserRenderer.positionCount = countLaser;
+                     dir = Vector3.Reflect(dir, hit.normal);
+                     pos = (Vector2)dir.normalized + hit.point;
+                     laserRenderer.SetPosition(countLaser - 1, hit.point);
+
                 }
                 else
                 {
