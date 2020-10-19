@@ -43,6 +43,11 @@ namespace BounceHitman.Controllers
         {
             playerShooter.InstantiateBullet();
         }
+
+        public Transform GetBullet()
+        {
+            return playerShooter.GetBulletTransform();
+        }
         #endregion
 
         #region Private Functions

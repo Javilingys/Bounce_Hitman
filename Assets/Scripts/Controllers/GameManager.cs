@@ -26,6 +26,14 @@ public class GameManager : MonoBehaviour
         private set => playerController = value;
     }
 
+    [SerializeField]
+    private CameraManager cameraManager;
+    public CameraManager CameraManager
+    {
+        get => cameraManager;
+        private set => cameraManager = value;
+    }
+
     private IInputManager inputManager;
 
     private StateMachine stateMachine = null;

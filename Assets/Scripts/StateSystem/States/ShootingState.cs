@@ -13,6 +13,7 @@ public class ShootingState : IState
     public void OnEnter()
     {
         gameManager.PlayerController.InstantiateBullet();
+        gameManager.CameraManager.TargetUpdate(gameManager.PlayerController.GetBullet());
     }
 
     public void OnExit()

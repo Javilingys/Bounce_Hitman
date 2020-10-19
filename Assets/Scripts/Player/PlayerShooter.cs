@@ -6,11 +6,19 @@ public class PlayerShooter : MonoBehaviour
 {
     [SerializeField]
     private Bullet bulletPrefab = null;
+
     [SerializeField]
     private Transform positionToInstance = null;
 
+    private Bullet bulletInstance = null;
+
     public void InstantiateBullet()
     {
-        Instantiate(bulletPrefab, positionToInstance.position, positionToInstance.rotation);
+        bulletInstance = Instantiate(bulletPrefab, positionToInstance.position, positionToInstance.rotation);
+    }
+
+    public Transform GetBulletTransform()
+    {
+        return bulletInstance.gameObject.transform;
     }
 }
