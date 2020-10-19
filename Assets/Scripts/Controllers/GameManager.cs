@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
 
         // Local Functions
         void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
+        // Loacl Conditions
         Func<bool> IsPlacing() => () => !IsPlacingMode;
     }
 

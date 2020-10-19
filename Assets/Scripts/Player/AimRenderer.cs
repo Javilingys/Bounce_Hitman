@@ -44,7 +44,16 @@ namespace BounceHitman.Player
 
             while (loopActive)
             {
-                RaycastHit2D hit = Physics2D.Raycast(pos, dir, laserDistance);
+                RaycastHit2D[] hits = Physics2D.RaycastAll(pos, dir, laserDistance);
+                RaycastHit2D hit = default;
+                foreach (RaycastHit2D currentHit in hits)
+                {
+                    if (currentHit.collider.tag == "Wall")
+                    {
+                        hit = currentHit;
+                        break;
+                    }
+                }
                 if (hit)
                 {
                      countLaser++;
