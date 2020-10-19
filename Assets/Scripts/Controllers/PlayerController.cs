@@ -10,6 +10,7 @@ namespace BounceHitman.Controllers
         private MoveByDrag moveByDrag = null;
         private RotatorByDrag rotatorByDrag = null;
         private AimRenderer aimRenderer = null;
+        private PlayerShooter playerShooter = null;
 
         #region Unity Functions
         private void Awake()
@@ -17,6 +18,7 @@ namespace BounceHitman.Controllers
             moveByDrag = GetComponent<MoveByDrag>();
             rotatorByDrag = GetComponent<RotatorByDrag>();
             aimRenderer = GetComponent<AimRenderer>();
+            playerShooter = GetComponent<PlayerShooter>();
         }
         #endregion
 
@@ -30,6 +32,16 @@ namespace BounceHitman.Controllers
         public void PlacingProcess(Vector3 touchPosition)
         {
             moveByDrag.Move(touchPosition);
+        }
+
+        public void ClearAim()
+        {
+            aimRenderer.ClearLine();
+        }
+
+        public void InstantiateBullet()
+        {
+            playerShooter.InstantiateBullet();
         }
         #endregion
 

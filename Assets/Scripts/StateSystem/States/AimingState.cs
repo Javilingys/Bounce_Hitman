@@ -48,6 +48,8 @@ public class AimingState : IState
     private void ReleaseDragHandler(Vector3 touchPosition)
     {
         playerController.AimingProcess(touchPosition);
+        gameManager.IsShotingMode = true;
+        gameManager.PlayerController.ClearAim();
     }
 
     private void InputListenersRegister()
@@ -60,7 +62,7 @@ public class AimingState : IState
     private void InputListenersUnregister()
     {
         inputManager.onStartDrag -= StartDragHandler;
-        inputManager.onDragging += DraggingHandler;
-        inputManager.onReleaseDrag += ReleaseDragHandler;
+        inputManager.onDragging -= DraggingHandler;
+        inputManager.onReleaseDrag -= ReleaseDragHandler;
     }
 }

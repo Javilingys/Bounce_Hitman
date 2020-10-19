@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
-    Rigidbody2D rigidbody2D = null;
+    private Rigidbody2D rigidbody2D = null;
 
     private void Awake()
     {

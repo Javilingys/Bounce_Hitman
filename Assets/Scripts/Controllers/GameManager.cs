@@ -37,6 +37,13 @@ public class GameManager : MonoBehaviour
         set => isPlacingMode = value;
     }
 
+    private bool isShotingMode = false;
+    public bool IsShotingMode
+    {
+        get => isShotingMode;
+        set => isShotingMode = value;
+    }
+
     #region Unity Methods
     private void Awake()
     {
@@ -63,9 +70,11 @@ public class GameManager : MonoBehaviour
         // States initializaing
         var placing = new PlacingState(this, inputManager);
         var aiming = new AimingState(this, inputManager);
+        var shoting = new ShootingState(this);
 
         // Transitions initializing
         At(placing, aiming, IsPlacing());
+        At(aiming, shoting, IsShooting());
 
         // Set State
         stateMachine.SetState(placing);
@@ -74,6 +83,7 @@ public class GameManager : MonoBehaviour
         void At(IState from, IState to, Func<bool> condition) => stateMachine.AddTransition(from, to, condition);
         // Loacl Conditions
         Func<bool> IsPlacing() => () => !IsPlacingMode;
+        Func<bool> IsShooting() => () => IsShotingMode;
     }
 
     private void Update()
