@@ -34,6 +34,15 @@ public class GameManager : MonoBehaviour
         private set => cameraManager = value;
     }
 
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float slowMotionTimeScale = 0f;
+    public float SlowMotionTimeScale
+    {
+        get => slowMotionTimeScale;
+        private set { slowMotionTimeScale = value; }
+    }
+
     private IInputManager inputManager;
 
     private StateMachine stateMachine = null;

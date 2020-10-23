@@ -12,6 +12,7 @@ public class ShootingState : IState
 
     public void OnEnter()
     {
+        Time.timeScale = gameManager.SlowMotionTimeScale;
         gameManager.PlayerController.InstantiateBullet();
         gameManager.CameraManager.TargetUpdate(gameManager.PlayerController.GetBullet());
     }

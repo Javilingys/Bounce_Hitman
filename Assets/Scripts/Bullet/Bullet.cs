@@ -5,6 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour
 {
+    [SerializeField]
+    [Range(0f, 100f)]
+    private float speed = 0f;
+    [SerializeField]
+    private GameObject sparkleParticle;
+
     private Rigidbody2D rigidbody2D = null;
 
     private void Awake()
@@ -12,9 +18,25 @@ public class Bullet : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
+    private void OnEnable()
+    {
+        BulletCollisionHandler.onBulletOnWallCollision += SpawnSparkle;
+    }
+
     void Start()
     {
-        rigidbody2D.velocity = transform.right * 20;
+        rigidbody2D.velocity = transform.right * speed;
+    }
+
+    private void OnDisable()
+    {
+        BulletCollisionHandler.onBulletOnWallCollision -= SpawnSparkle;
+    }
+
+    private void SpawnSparkle(Vector2 spawnPoint)
+    {
+
+        Instantiate(sparkleParticle, spawnPoint, Quaternion.identity);
     }
 
 }

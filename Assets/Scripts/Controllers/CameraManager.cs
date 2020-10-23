@@ -8,10 +8,23 @@ public class CameraManager : MonoBehaviour
     [SerializeField]
     private CinemachineVirtualCamera CVCamera = null;
 
+    [SerializeField]
+    private float newOrthgraphicSize = default;
+
+    private float oldOrthographicSize;
+
+    private void Awake()
+    {
+        if (CVCamera)
+        {
+            oldOrthographicSize = CVCamera.m_Lens.OrthographicSize;
+        }
+    }
+
     public void TargetUpdate(Transform target)
     {
         CVCamera.Follow = target;
-        CVCamera.m_Lens.OrthographicSize = 5f;
+        CVCamera.m_Lens.OrthographicSize = newOrthgraphicSize;
     }
 
 }
