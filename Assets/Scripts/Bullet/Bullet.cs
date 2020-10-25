@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +11,10 @@ public class Bullet : MonoBehaviour
     private float speed = 0f;
     [SerializeField]
     private GameObject sparkleParticle;
+    [SerializeField]
+    private int maxBounceCount = 0;
 
+    private int currentBounceCoune;
     private Rigidbody2D rigidbody2D = null;
 
     private void Awake()
@@ -21,6 +25,7 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         BulletCollisionHandler.onBulletOnWallCollision += SpawnSparkle;
+        BulletCollisionHandler.onBulletOnEnemyCollision += ImmediateDestroyed;
     }
 
     void Start()
@@ -31,12 +36,33 @@ public class Bullet : MonoBehaviour
     private void OnDisable()
     {
         BulletCollisionHandler.onBulletOnWallCollision -= SpawnSparkle;
+        BulletCollisionHandler.onBulletOnEnemyCollision -= ImmediateDestroyed;
     }
 
     private void SpawnSparkle(Vector2 spawnPoint)
     {
-
         Instantiate(sparkleParticle, spawnPoint, Quaternion.identity);
+        DestroyProcess();
     }
 
+    private void DestroyProcess()
+    {
+        currentBounceCoune++;
+
+        if (currentBounceCoune >= maxBounceCount)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void ImmediateDestroyed(Vector2 uselesPoint)
+    {
+        Invoke(nameof(InnerDestroy), 0.065f);
+
+    }
+
+    void InnerDestroy()
+    {
+        Destroy(this.gameObject);
+    }
 }

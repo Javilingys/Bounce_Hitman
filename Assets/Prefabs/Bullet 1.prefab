@@ -130,7 +130,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 500
+  m_Mass: 400
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   sparkleParticle: {fileID: 4971652473915695853, guid: 33009654c2fe82241bd4365b2685c7d3, type: 3}
+  maxBounceCount: 5
 --- !u!114 &1086572520132293542
 MonoBehaviour:
   m_ObjectHideFlags: 0
