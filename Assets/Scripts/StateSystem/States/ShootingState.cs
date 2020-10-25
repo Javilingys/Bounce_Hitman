@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using BounceHitman.Bullet;
 using UnityEngine;
 
 public class ShootingState : IState

@@ -2,34 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRagdoll : MonoBehaviour
+namespace BounceHitman.Enemy
 {
-    [SerializeField]
-    private GameObject[] bodyParts;
-
-    #region Public Methods
-    public void EnableRagdoll()
+    public class EnemyRagdoll : MonoBehaviour
     {
-        GetComponent<Collider2D>().enabled = false;
+        [SerializeField]
+        private GameObject[] bodyParts;
 
-        foreach (GameObject bodyPart in bodyParts)
+        #region Public Methods
+        public void EnableRagdoll()
         {
-            bodyPart.GetComponent<Rigidbody2D>().isKinematic = false;
-            bodyPart.GetComponent<Collider2D>().enabled = true;
-        }
-    }
+            GetComponent<Collider2D>().enabled = false;
 
-    public void DisableRagdoll()
-    {
-        GetComponent<Collider2D>().enabled = true;
-        foreach (GameObject bodyPart in bodyParts)
+            foreach (GameObject bodyPart in bodyParts)
+            {
+                bodyPart.GetComponent<Rigidbody2D>().isKinematic = false;
+                bodyPart.GetComponent<Collider2D>().enabled = true;
+            }
+        }
+
+        public void DisableRagdoll()
         {
-            bodyPart.GetComponent<Rigidbody2D>().isKinematic = true;
-            bodyPart.GetComponent<Collider2D>().enabled = false;
+            GetComponent<Collider2D>().enabled = true;
+            foreach (GameObject bodyPart in bodyParts)
+            {
+                bodyPart.GetComponent<Rigidbody2D>().isKinematic = true;
+                bodyPart.GetComponent<Collider2D>().enabled = false;
+            }
         }
-    }
-    #endregion
+        #endregion
 
-    #region Private Methods
-    #endregion
+        #region Private Methods
+        #endregion
+    }
 }

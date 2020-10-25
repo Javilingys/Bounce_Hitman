@@ -1,17 +1,21 @@
-﻿using System;
+﻿using BounceHitman.Misc;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCollisionHandler : MonoBehaviour
+namespace BounceHitman.Enemy
 {
-    public event Action onBulletCollisionEvent;
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    public class EnemyCollisionHandler : MonoBehaviour
     {
-        if(collision.gameObject.CompareTag(Tags.BULLET_TAG))
+        public event Action onBulletCollisionEvent;
+
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            onBulletCollisionEvent?.Invoke();
+            if (collision.gameObject.CompareTag(Tags.BULLET_TAG))
+            {
+                onBulletCollisionEvent?.Invoke();
+            }
         }
     }
 }

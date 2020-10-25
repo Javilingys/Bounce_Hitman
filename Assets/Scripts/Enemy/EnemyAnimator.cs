@@ -2,25 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
-public class EnemyAnimator : MonoBehaviour
+namespace BounceHitman.Enemy
 {
-    private Animator animator;
-
-    #region Unity Methods
-    private void Awake()
+    [RequireComponent(typeof(Animator))]
+    public class EnemyAnimator : MonoBehaviour
     {
-        animator = GetComponent<Animator>();
-    }
-    #endregion
+        private Animator animator;
 
-    #region Public Methods
-    public void StopEnemyAnimation()
-    {
-        animator.enabled = false;
-    }
-    #endregion
+        #region Unity Methods
+        private void Awake()
+        {
+            animator = GetComponent<Animator>();
+        }
+        #endregion
 
-    #region Private Methods
-    #endregion
+        #region Public Methods
+        public void StopEnemyAnimation()
+        {
+            animator.enabled = false;
+        }
+        #endregion
+
+        #region Private Methods
+        #endregion
+    }
 }
