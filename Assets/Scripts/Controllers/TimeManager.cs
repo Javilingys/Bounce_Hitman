@@ -48,8 +48,6 @@ public class TimeManager : MonoBehaviour
             Time.timeScale = slowdownHitFactor;
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
 
-
-
             StartCoroutine(SlowmotionHitRoutine());
             isHit = true;
         }

@@ -19,6 +19,7 @@ namespace BounceHitman.UI
 
         protected override void Awake()
         {
+            base.Awake();
             uiItemlList = GetComponentsInChildren<UIItem>().ToList();
             uiItemlList.ForEach((x) => x.gameObject.SetActive(false));
             SwitchUI(UIType.GameUI);

@@ -22,5 +22,13 @@ namespace BounceHitman.Misc
                 Destroy(gameObject);
             }
         }
+
+        protected virtual void OnDestroy()
+        {
+            if (instance == this as T)
+            {
+                instance = null;
+            }
+        }
     }
 }

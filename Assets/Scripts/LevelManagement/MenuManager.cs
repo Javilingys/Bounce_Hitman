@@ -1,21 +1,37 @@
-﻿using System.Collections;
+﻿using BounceHitman.Misc;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 namespace BounceHitman.LevelManagement
 {
-    public class MenuManager : MonoBehaviour
+    public class MenuManager : SingletonMonoBehaviour<MenuManager>
     {
-        public Menu mainMenuPrefab;
-        public Menu settingsMenuPrefab;
-       // public Menu creditsScreenPrefab;
+        [SerializeField]
+        private MainMenu mainMenuPrefab;
+        [SerializeField]
+        private SettingsMenu settingsMenuPrefab;
+        [SerializeField]
+        private GameMenu gameMenuPrefab;
+        [SerializeField]
+        private PauseMenu pauseMenuPrefab;
+        [SerializeField]
+        private EndLevelMenu endLevelMenu;
 
         [SerializeField]
         private Transform menuParent;
 
-        private void Awake()
+        private Stack<Menu> menuStack = new Stack<Menu>();
+
+        protected override void Awake()
         {
-            InitializeMenus();
+            base.Awake();
+            if (Instance == this)
+            {
+                InitializeMenus();
+                DontDestroyOnLoad(gameObject);
+            }
         }
 
         private void InitializeMenus()
@@ -26,10 +42,17 @@ namespace BounceHitman.LevelManagement
                 menuParent = menuParentObject.transform;
             }
 
-            Menu[] menuPrefabs = { mainMenuPrefab, settingsMenuPrefab };
+            DontDestroyOnLoad(menuParent);
 
-            foreach (Menu prefab in menuPrefabs)
+            // Seatch non-static field , private , and specific
+            BindingFlags myFlags = BindingFlags.Instance | BindingFlags.NonPublic |
+                BindingFlags.DeclaredOnly;
+            FieldInfo[] fields = this.GetType().GetFields(myFlags);
+
+            foreach (FieldInfo field in fields)
             {
+                Menu prefab = field.GetValue(this) as Menu;
+
                 if (prefab != null)
                 {
                     Menu menuInstance = Instantiate(prefab, menuParent);
@@ -39,9 +62,47 @@ namespace BounceHitman.LevelManagement
                     }
                     else
                     {
-                        // open main menu
+                        OpenMenu(menuInstance);
                     }
                 }
+            }
+        }
+
+        public void OpenMenu(Menu menuInstance)
+        {
+            if (menuInstance == null)
+            {
+                Debug.LogWarning("MENUMANAGER OpenMenu ERROR: invalid menu");
+                return;
+            }
+
+            if (menuStack.Count > 0)
+            {
+                foreach (Menu menu in menuStack)
+                {
+                    menu.gameObject.SetActive(false);
+                }
+            }
+
+            menuInstance.gameObject.SetActive(true);
+            menuStack.Push(menuInstance);
+        }
+
+        public void CloseMenu()
+        {
+            if (menuStack.Count == 0)
+            {
+                Debug.LogWarning("MENUMANAGER CloseMenu ERROR: No menus in stakc");
+                return;
+            }
+
+            Menu topMenu = menuStack.Pop();
+            topMenu.gameObject.SetActive(false);
+
+            if (menuStack.Count > 0)
+            {
+                Menu nextMenu = menuStack.Peek();
+                nextMenu.gameObject.SetActive(true);
             }
         }
     }
