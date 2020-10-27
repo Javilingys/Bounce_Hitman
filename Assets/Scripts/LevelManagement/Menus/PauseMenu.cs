@@ -30,7 +30,6 @@ namespace BounceHitman.LevelManagement
         {
             Time.timeScale = 1f;
             LevelLoader.LoadMainMenuLevel();
-
             MainMenu.Open();
         }
     }

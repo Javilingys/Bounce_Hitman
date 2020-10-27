@@ -7,7 +7,7 @@ namespace BounceHitman.LevelManagement
 {
     public class LevelLoader : MonoBehaviour
     {
-        private static int mainMenuIndex = 0;
+        private static int mainMenuIndex = 1;
 
         public static void LoadLevel(string levelName)
         {
@@ -47,6 +47,7 @@ namespace BounceHitman.LevelManagement
         {
             int nextSceneIndex = (SceneManager.GetActiveScene().buildIndex + 1)
                 % SceneManager.sceneCountInBuildSettings;
+            nextSceneIndex = Mathf.Clamp(nextSceneIndex, mainMenuIndex, nextSceneIndex);
             LoadLevel(nextSceneIndex);
         }
 
