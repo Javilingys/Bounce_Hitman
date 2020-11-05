@@ -70,7 +70,8 @@ namespace BounceHitman.Bullet
 
         private void ImmediateDestroyed(Vector2 uselesPoint)
         {
-            Invoke(nameof(InnerDestroy), 0.065f);
+
+            Invoke(nameof(InnerDestroy), 0.06f);
         }
 
         void InnerDestroy()

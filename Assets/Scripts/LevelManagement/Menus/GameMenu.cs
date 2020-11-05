@@ -18,12 +18,14 @@ namespace BounceHitman.LevelManagement
         {
             InitBounceCountText();
             BulletCollisionHandler.onBulletOnWallCollision += UpdateBounceCountTextByHit;
+            BulletCollisionHandler.onBulletOnEnemyCollision += OnEnemyEventHandler;
             GameManager.onBountCountUpdate += UpdateBounceCountText;
         }
 
         private void OnDisable()
         {
             BulletCollisionHandler.onBulletOnWallCollision -= UpdateBounceCountTextByHit;
+            BulletCollisionHandler.onBulletOnEnemyCollision -= OnEnemyEventHandler;
             GameManager.onBountCountUpdate -= UpdateBounceCountText;
         }
 
@@ -33,6 +35,11 @@ namespace BounceHitman.LevelManagement
             {
                 bounceCountText.text = GameManager.Instance.MaxBounceCount.ToString();
             }
+        }
+
+        private void OnEnemyEventHandler(Vector2 point)
+        {
+            BulletCollisionHandler.onBulletOnWallCollision -= UpdateBounceCountTextByHit;
         }
 
         private void UpdateBounceCountTextByHit(Vector2 spawnPoint)
