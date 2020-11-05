@@ -17,7 +17,7 @@ namespace BounceHitman.LevelManagement
         [SerializeField]
         private PauseMenu pauseMenuPrefab;
         [SerializeField]
-        private EndLevelMenu endLevelMenu;
+        private WinScreenMenu endLevelMenu;
 
         [SerializeField]
         private Transform menuParent;
@@ -68,6 +68,16 @@ namespace BounceHitman.LevelManagement
             }
         }
 
+        private void Update()
+        {
+            /*Debug.Log("Stack Count : " + menuStack.Count);
+            Debug.Log("Stack:");
+            foreach (Menu menu in menuStack)
+            {
+                Debug.Log(menu);
+            }*/
+        }
+
         public void OpenMenu(Menu menuInstance)
         {
             if (menuInstance == null)
@@ -103,6 +113,14 @@ namespace BounceHitman.LevelManagement
             {
                 Menu nextMenu = menuStack.Peek();
                 nextMenu.gameObject.SetActive(true);
+            }
+        }
+
+        public void CloseAllMenus()
+        {
+            while (menuStack.Count != 0)
+            {
+                CloseMenu();
             }
         }
     }

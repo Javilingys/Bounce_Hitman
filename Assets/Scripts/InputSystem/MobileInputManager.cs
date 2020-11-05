@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace BounceHitman.InputSystem
 {
@@ -14,6 +15,7 @@ namespace BounceHitman.InputSystem
         #region Unity Functions
         private void Update()
         {
+            if (UICursorDetect()) return;
             TouchDetect();
         }
         #endregion
@@ -22,6 +24,15 @@ namespace BounceHitman.InputSystem
         #endregion
 
         #region Private Functions
+        private bool UICursorDetect()
+        {
+            if (Input.touchCount > 0 && EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {
+                return true;
+            }
+            return false;
+        }
+
         private void TouchDetect()
         {
             if (Input.touchCount > 0)
@@ -35,11 +46,12 @@ namespace BounceHitman.InputSystem
 
                 if (touch.phase == TouchPhase.Moved)
                 {
-                    CallActionOnPointer((position) => onDragging?.Invoke(position), touch);
+                     CallActionOnPointer((position) => onDragging?.Invoke(position), touch);
                 }
 
                 if (touch.phase == TouchPhase.Ended)
                 {
+
                     CallActionOnPointer((position) => onReleaseDrag?.Invoke(position), touch);
                 }
             }

@@ -1,4 +1,5 @@
 ﻿using BounceHitman.Bullet;
+using BounceHitman.LevelManagement;
 using UnityEngine;
 
 public class ShootingState : IState
@@ -15,16 +16,24 @@ public class ShootingState : IState
         gameManager.PlayerController.InstantiateBullet();
         gameManager.CameraManager.TargetUpdate(gameManager.PlayerController.GetBullet());
         BulletCollisionHandler.onBulletOnEnemyCollisionForCamera += EnemyHit;
+        TimeManager.onExitSlowMotion += OpenWinScreen;
     }
 
     public void OnExit()
     {
         BulletCollisionHandler.onBulletOnEnemyCollisionForCamera -= EnemyHit;
+        TimeManager.onExitSlowMotion -= OpenWinScreen;
     }
 
     public void Tick()
     {
 
+    }
+
+    private void OpenWinScreen()
+    {
+        WinScreenMenu.Open();
+        WinScreenMenu.Instance.SetWinText();
     }
 
     private void EnemyHit(Transform enemyTransform)

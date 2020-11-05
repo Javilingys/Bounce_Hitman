@@ -20,8 +20,13 @@ namespace BounceHitman.LevelManagement
         private IEnumerator OnPlayPressedRoutine()
         {
             TransitionFader.PlayTransition(startTransitionPrefab);
+
+            float fadeDelay = (startTransitionPrefab != null) ? startTransitionPrefab.Delay + startTransitionPrefab.FadeOnDuration
+                : 0f;
+
             LevelLoader.LoadNextLevel();
-            yield return new WaitForSeconds(playDelay);
+            yield return new WaitForSeconds(fadeDelay);
+            MenuManager.Instance.CloseAllMenus();
             GameMenu.Open();
         }
 

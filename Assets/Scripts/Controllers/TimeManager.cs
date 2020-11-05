@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour
 {
+    public static event Action onExitSlowMotion;
+
     private static TimeManager instance = null;
     public static TimeManager Instance
     {
@@ -57,12 +59,18 @@ public class TimeManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(2f);
 
-        while(Time.timeScale < 1f)
+        while (Time.timeScale < 1f)
         {
+            while (GameManager.Instance.IsPause)
+            {
+                yield return null;
+            }
             Time.timeScale += (1f / slowdownHitLength) * Time.unscaledDeltaTime;
             Time.timeScale = Mathf.Clamp(Time.timeScale, 0f, 1f);
             Time.fixedDeltaTime = Time.timeScale * 0.02f;
             yield return null;
         }
+
+        onExitSlowMotion?.Invoke();
     }
 }

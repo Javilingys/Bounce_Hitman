@@ -17,11 +17,13 @@ namespace BounceHitman.LevelManagement
         {
             Time.timeScale = timeScaleBeforPause;
             base.OnBackPressed();
+            GameManager.Instance.IsPause = false;
         }
 
         public void OnRestartPressed()
         {
             Time.timeScale = 1f;
+            GameManager.Instance.PrepareToReloadLevel();
             LevelLoader.ReloadLevel();
             base.OnBackPressed();
         }
@@ -29,8 +31,9 @@ namespace BounceHitman.LevelManagement
         public void OnMainMenuPressed()
         {
             Time.timeScale = 1f;
+            GameManager.Instance.PrepareToReloadLevel();
+            MenuManager.Instance.CloseAllMenus();
             LevelLoader.LoadMainMenuLevel();
-            MainMenu.Open();
         }
     }
 }

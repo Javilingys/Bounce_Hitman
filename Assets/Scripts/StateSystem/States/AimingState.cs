@@ -11,6 +11,8 @@ public class AimingState : IState
 
     private readonly PlayerController playerController;
 
+    bool isStartDragging = false;
+
     public AimingState(GameManager gameManager, IInputManager inputManager)
     {
         this.gameManager = gameManager;
@@ -38,18 +40,25 @@ public class AimingState : IState
     private void StartDragHandler(Vector3 touchPosition)
     {
         playerController.AimingProcess(touchPosition);
+        isStartDragging = true;
     }
 
     private void DraggingHandler(Vector3 touchPosition)
     {
-        playerController.AimingProcess(touchPosition);
+        if (isStartDragging)
+        {
+            playerController.AimingProcess(touchPosition);
+        }
     }
 
     private void ReleaseDragHandler(Vector3 touchPosition)
     {
-        playerController.AimingProcess(touchPosition);
-        gameManager.IsShotingMode = true;
-        gameManager.PlayerController.ClearAim();
+        if (isStartDragging)
+        {
+            playerController.AimingProcess(touchPosition);
+            gameManager.IsShotingMode = true;
+            gameManager.PlayerController.ClearAim();
+        }
     }
 
     private void InputListenersRegister()

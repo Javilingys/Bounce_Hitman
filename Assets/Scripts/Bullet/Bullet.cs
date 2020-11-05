@@ -1,7 +1,9 @@
-﻿using System;
+﻿using BounceHitman.LevelManagement;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BounceHitman.Bullet
 {
@@ -13,15 +15,17 @@ namespace BounceHitman.Bullet
         private float speed = 0f;
         [SerializeField]
         private GameObject sparkleParticle;
-        [SerializeField]
-        private int maxBounceCount = 0;
 
+        private int maxBounceCount = 0;
         private int currentBounceCoune;
         private Rigidbody2D rigidbody2D = null;
+
+        private bool isTargetHit = false;
 
         private void Awake()
         {
             rigidbody2D = GetComponent<Rigidbody2D>();
+            SetMaxBounceCount();
         }
 
         private void OnEnable()
@@ -41,6 +45,11 @@ namespace BounceHitman.Bullet
             BulletCollisionHandler.onBulletOnEnemyCollision -= ImmediateDestroyed;
         }
 
+        public void SetMaxBounceCount()
+        {
+            maxBounceCount = GameManager.Instance.MaxBounceCount;
+        }
+
         private void SpawnSparkle(Vector2 spawnPoint)
         {
             Instantiate(sparkleParticle, spawnPoint, Quaternion.identity);
@@ -53,6 +62,8 @@ namespace BounceHitman.Bullet
 
             if (currentBounceCoune >= maxBounceCount)
             {
+                WinScreenMenu.Open();
+                WinScreenMenu.Instance.SetLoseText();
                 Destroy(gameObject);
             }
         }
@@ -60,7 +71,6 @@ namespace BounceHitman.Bullet
         private void ImmediateDestroyed(Vector2 uselesPoint)
         {
             Invoke(nameof(InnerDestroy), 0.065f);
-
         }
 
         void InnerDestroy()

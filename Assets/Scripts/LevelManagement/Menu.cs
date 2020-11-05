@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace BounceHitman.LevelManagement
@@ -33,6 +34,7 @@ namespace BounceHitman.LevelManagement
         {
             if (MenuManager.Instance != null && Instance != null)
             {
+                Debug.Log("OPEN");
                 MenuManager.Instance.OpenMenu(Instance);
             }
         }

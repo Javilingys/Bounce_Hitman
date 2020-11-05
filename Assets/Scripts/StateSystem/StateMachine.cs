@@ -21,6 +21,11 @@ public class StateMachine
         currentState?.Tick();
     }
 
+    public void ExitCurrentState()
+    {
+        currentState?.OnExit();
+    }
+
     public void SetState(IState state)
     {
         if (state == currentState)

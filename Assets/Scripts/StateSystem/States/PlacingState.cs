@@ -11,6 +11,8 @@ public class PlacingState : IState
 
     private readonly PlayerController playerController;
 
+    bool isStartDragging = false;
+
     public PlacingState(GameManager gameManager, IInputManager inputManager)
     {
         this.gameManager = gameManager;
@@ -23,6 +25,7 @@ public class PlacingState : IState
 
     public void OnEnter()
     {
+        Debug.Log("PLACING");
         InputListenersRegister();
         gameManager.IsPlacingMode = true;
     }
@@ -40,17 +43,25 @@ public class PlacingState : IState
     private void StartDragHandler(Vector3 touchPosition)
     {
         playerController.PlacingProcess(touchPosition);
+        isStartDragging = true;
     }
 
     private void DraggingHandler(Vector3 touchPosition)
     {
-        playerController.PlacingProcess(touchPosition);
+        if (isStartDragging)
+        {
+            playerController.PlacingProcess(touchPosition);
+        }
     }
 
     private void ReleaseDragHandler(Vector3 touchPosition)
     {
-        playerController.PlacingProcess(touchPosition);
-        gameManager.IsPlacingMode = false;
+        if (isStartDragging)
+        {
+            playerController.PlacingProcess(touchPosition);
+            gameManager.IsPlacingMode = false;
+            isStartDragging = false;
+        }
     }
 
     private void InputListenersRegister()

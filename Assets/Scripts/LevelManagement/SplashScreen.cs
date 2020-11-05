@@ -20,7 +20,8 @@ namespace BounceHitman.LevelManagement
 
         private void Start()
         {
-            screenFader.FadeOn();
+            FadeAndLoad();
+            //screenFader.FadeOn();
         }
 
         public void FadeAndLoad()
@@ -30,6 +31,9 @@ namespace BounceHitman.LevelManagement
 
         private IEnumerator FadeAndLoadRoutine()
         {
+            screenFader.FadeOn();
+            yield return new WaitForSeconds(screenFader.FadeOnDuration);
+
             yield return new WaitForSeconds(delay);
             screenFader.FadeOff();
             LevelLoader.LoadMainMenuLevel();
