@@ -9,10 +9,14 @@ public class SaveData
     public float sfxVolume;
     public float musicVolume;
 
+    public string hashValue;
+
     public SaveData()
     {
         masterVoulme = default;
         sfxVolume = default;
         musicVolume = default;
+
+        hashValue = String.Empty;
     }
 }
