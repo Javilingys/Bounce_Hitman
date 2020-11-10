@@ -6,29 +6,30 @@ namespace BounceHitman.LevelManagement
 {
     public class MainMenu : Menu<MainMenu>
     {
-        [SerializeField]
-        private float playDelay = 0.5f;
+        //[SerializeField]
+        //private float playDelay = 0.5f;
 
-        [SerializeField]
-        private TransitionFader startTransitionPrefab;
+        //[SerializeField]
+        //private TransitionFader startTransitionPrefab;
 
         public void OnPlayPressed()
         {
-            StartCoroutine(OnPlayPressedRoutine());
+            LevelSelectMenu.Open();
+            //StartCoroutine(OnPlayPressedRoutine());
         }
 
-        private IEnumerator OnPlayPressedRoutine()
-        {
-            TransitionFader.PlayTransition(startTransitionPrefab);
+        //private IEnumerator OnPlayPressedRoutine()
+        //{
+        //    TransitionFader.PlayTransition(startTransitionPrefab);
 
-            float fadeDelay = (startTransitionPrefab != null) ? startTransitionPrefab.Delay + startTransitionPrefab.FadeOnDuration
-                : 0f;
+        //    float fadeDelay = (startTransitionPrefab != null) ? startTransitionPrefab.Delay + startTransitionPrefab.FadeOnDuration
+        //        : 0f;
 
-            LevelLoader.LoadNextLevel();
-            yield return new WaitForSeconds(fadeDelay);
-            MenuManager.Instance.CloseAllMenus();
-            GameMenu.Open();
-        }
+        //    LevelLoader.LoadNextLevel();
+        //    yield return new WaitForSeconds(fadeDelay);
+        //    MenuManager.Instance.CloseAllMenus();
+        //    GameMenu.Open();
+        //}
 
         public void OnSettingsPressed()
         {

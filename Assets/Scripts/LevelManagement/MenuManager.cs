@@ -18,6 +18,8 @@ namespace BounceHitman.LevelManagement
         private PauseMenu pauseMenuPrefab;
         [SerializeField]
         private WinScreenMenu endLevelMenu;
+        [SerializeField]
+        private LevelSelectMenu levelSelectMenuPrefab;
 
         [SerializeField]
         private Transform menuParent;
