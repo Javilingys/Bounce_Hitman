@@ -95,7 +95,9 @@ public class GameManager : MonoBehaviour
         {
             inputManager = gameObject.AddComponent<PCInputManager>();
         }
-        SetMaxBounceCount(Database.GetLevelItemById(SceneManager.GetActiveScene().name));
+
+        //SetMaxBounceCount(Database.GetLevelItemById(SceneManager.GetActiveScene().name));
+        SetMaxBounceCount(MissionObjectList.Instance.FindBySceneName(SceneManager.GetActiveScene().name));
 
 
         stateMachine = new StateMachine();
@@ -161,47 +163,68 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region Private Methods
-    private void SetMaxBounceCount(LevelItem levelItem)
+    //private void SetMaxBounceCount(LevelItem levelItem)
+    //{
+    //    if (levelItem == null)
+    //    {
+    //        Debug.LogWarning("BULLET levelItem == null");
+    //        return;
+    //    }
+
+    //    maxBounceCount = levelItem.BounceCount;
+    //    currentBounceCount = maxBounceCount;
+    //    onBountCountUpdate?.Invoke(maxBounceCount);
+    //}
+
+    private void SetMaxBounceCount(MissionObject missionObject)
     {
-        if (levelItem == null)
+        if (missionObject == null)
         {
             Debug.LogWarning("BULLET levelItem == null");
             return;
         }
 
-        maxBounceCount = levelItem.BounceCount;
+        maxBounceCount = missionObject.bounceCount;
         currentBounceCount = maxBounceCount;
         onBountCountUpdate?.Invoke(maxBounceCount);
     }
 
     private void LevelEnded()
     {
-        int scoreFor3Stars = Database.GetLevelItemById(SceneManager.GetActiveScene().name).CountFor3Star;
-        int scoreFor2Stars = Database.GetLevelItemById(SceneManager.GetActiveScene().name).CountFor2Star;
+        int scoreFor3Stars = MissionObjectList.Instance.FindBySceneName(SceneManager.GetActiveScene().name).countFor3Star;
+        int scoreFor2Stars = MissionObjectList.Instance.FindBySceneName(SceneManager.GetActiveScene().name).countFor2Star;
 
-        int bestScore = Database.GetLevelItemById(SceneManager.GetActiveScene().name).Score;
-        int currentScore = maxBounceCount;
+        int bestScore = MissionObjectList.Instance.FindBySceneName(SceneManager.GetActiveScene().name).score;
+        int currentScore = 0;
+
+
+        if ((maxBounceCount - currentBounceCount) <= scoreFor3Stars)
+        {
+            WinScreenMenu.Instance.SetThreeStars();
+            currentScore = 3;
+        }
+        else if ((maxBounceCount - currentBounceCount) > scoreFor3Stars &&
+            (maxBounceCount - currentBounceCount) <= scoreFor2Stars)
+        {
+            WinScreenMenu.Instance.SetTwoStars();
+            currentScore = 2;
+        }
+        else if ((maxBounceCount - currentBounceCount) > scoreFor2Stars &&
+            currentBounceCount > 0)
+        {
+            WinScreenMenu.Instance.SetOneStar();
+            currentScore = 1;
+        }
 
         if (bestScore > currentScore)
         {
             currentScore = bestScore;
         }
 
-        if ((maxBounceCount - currentBounceCount) <= scoreFor3Stars)
-        {
-            WinScreenMenu.Instance.SetThreeStars();
-        }
-        else if ((maxBounceCount - currentBounceCount) > scoreFor3Stars &&
-            (maxBounceCount - currentBounceCount) <= scoreFor2Stars)
-        {
-            WinScreenMenu.Instance.SetTwoStars();
-        }
-        else if ((maxBounceCount - currentBounceCount) > scoreFor2Stars &&
-            currentBounceCount > 0)
-        {
-            WinScreenMenu.Instance.SetOneStar();
-        }
+        MissionObjectList.Instance.FindBySceneName(SceneManager.GetActiveScene().name).score = currentScore;
 
+        int currentDifference = currentScore - bestScore;
+        MissionObjectList.Instance.TotalStars += currentDifference;
     }
 
     private bool IsPlacingAndPauseTrue()

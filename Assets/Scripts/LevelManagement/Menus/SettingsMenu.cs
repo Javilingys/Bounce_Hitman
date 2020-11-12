@@ -16,13 +16,13 @@ namespace BounceHitman.LevelManagement
         [SerializeField]
         private Slider musicVolumeSlider;
 
-        private DataManager dataManager;
+        //private DataManager dataManager;
 
         protected override void Awake()
         {
             base.Awake();
 
-            dataManager = FindObjectOfType<DataManager>();
+            //dataManager = FindObjectOfType<DataManager>();
 
             LoadData();
         }
@@ -34,27 +34,27 @@ namespace BounceHitman.LevelManagement
 
         public void OnMasterVolumeChanged(float volume)
         {
-            if (dataManager != null)
+            if (DataManager.Instance != null)
             {
-                dataManager.MasterVolume = volume;
+                DataManager.Instance.MasterVolume = volume;
             }
             //PlayerPrefs.SetFloat("MasterVolume", volume);
         }
 
         public void OnSFXVolumeChanged(float volume)
         {
-            if (dataManager != null)
+            if (DataManager.Instance != null)
             {
-                dataManager.SfxVolume = volume;
+                DataManager.Instance.SfxVolume = volume;
             }
             //PlayerPrefs.SetFloat("SFXVolume", volume);
         }
 
         public void OnMusicVolumeChanged(float volume)
         {
-            if (dataManager != null)
+            if (DataManager.Instance != null)
             {
-                dataManager.MusicVolume = volume;
+                DataManager.Instance.MusicVolume = volume;
             }
             //PlayerPrefs.SetFloat("MusicVolume", volume);
         }
@@ -62,24 +62,24 @@ namespace BounceHitman.LevelManagement
         public override void OnBackPressed()
         {
             base.OnBackPressed();
-            if (dataManager != null)
+            if (DataManager.Instance != null)
             {
-                dataManager.Save();
+                DataManager.Instance.Save();
             }
             //PlayerPrefs.Save();
         }
 
         public void LoadData()
         {
-            if (dataManager == null || masterVolumeSlider == null || sfxVolumeSlider == null
+            if (DataManager.Instance == null || masterVolumeSlider == null || sfxVolumeSlider == null
                 || musicVolumeSlider == null) 
                 return;
 
-            dataManager.Load();
+            DataManager.Instance.Load();
 
-            masterVolumeSlider.value = dataManager.MasterVolume;
-            sfxVolumeSlider.value = dataManager.SfxVolume;
-            musicVolumeSlider.value = dataManager.MusicVolume;
+            masterVolumeSlider.value = DataManager.Instance.MasterVolume;
+            sfxVolumeSlider.value = DataManager.Instance.SfxVolume;
+            musicVolumeSlider.value = DataManager.Instance.MusicVolume;
             //masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
             //sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
             //musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");

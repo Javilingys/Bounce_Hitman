@@ -9,6 +9,9 @@ public class SaveData
     public float sfxVolume;
     public float musicVolume;
 
+    public List<MissionObject> missionObjects;
+    public int totalStars;
+
     public string hashValue;
 
     public SaveData()
@@ -16,6 +19,9 @@ public class SaveData
         masterVoulme = default;
         sfxVolume = default;
         musicVolume = default;
+
+        missionObjects = new List<MissionObject>();
+        totalStars = default;
 
         hashValue = String.Empty;
     }

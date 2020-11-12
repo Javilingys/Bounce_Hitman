@@ -72,12 +72,12 @@ namespace BounceHitman.LevelManagement
 
         private void Update()
         {
-            /*Debug.Log("Stack Count : " + menuStack.Count);
-            Debug.Log("Stack:");
-            foreach (Menu menu in menuStack)
-            {
-                Debug.Log(menu);
-            }*/
+            //Debug.Log("Stack Count : " + menuStack.Count);
+            //Debug.Log("Stack:");
+            //foreach (Menu menu in menuStack)
+            //{
+            //    Debug.Log(menu);
+            //}
         }
 
         public void OpenMenu(Menu menuInstance)

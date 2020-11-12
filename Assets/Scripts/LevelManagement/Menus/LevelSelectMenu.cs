@@ -66,8 +66,12 @@ public class LevelSelectMenu : Menu<LevelSelectMenu>
     private IEnumerator OnPlayPressedRoutine(string sceneName)
     {
         TransitionFader.PlayTransition(playTransitionPrefab);
+
+        float fadeDelay = (playTransitionPrefab != null) ? playTransitionPrefab.Delay + playTransitionPrefab.FadeOnDuration
+                : 0f;
+
         LevelLoader.LoadLevel(sceneName);
-        yield return new WaitForSeconds(playDelay);
+        yield return new WaitForSeconds(fadeDelay);
         MenuManager.Instance.CloseAllMenus();
         GameMenu.Open();
     }

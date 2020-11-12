@@ -71,15 +71,23 @@ namespace BounceHitman.LevelManagement
             onFadeInCompleted?.Invoke();
         }
 
+        private void SaveGame()
+        {
+
+        }
+
         public void OnNexLevelPressed()
         {
+            SaveGame();
             Time.timeScale = 1f;
+            GameManager.Instance.PrepareToReloadLevel();
             base.OnBackPressed();
             LevelLoader.LoadNextLevel();
         }
 
         public void OnRestartPressed()
         {
+            SaveGame();
             Time.timeScale = 1f;
             //MenuManager.Instance.CloseAllMenus();
             GameManager.Instance.PrepareToReloadLevel();
@@ -90,6 +98,7 @@ namespace BounceHitman.LevelManagement
 
         public void OnMainMenuPressed()
         {
+            SaveGame();
             Time.timeScale = 1f;
             GameManager.Instance.PrepareToReloadLevel();
             MenuManager.Instance.CloseAllMenus();

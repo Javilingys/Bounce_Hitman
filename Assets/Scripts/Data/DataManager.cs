@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using BounceHitman.Misc;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DataManager : MonoBehaviour
+public class DataManager : SingletonMonoBehaviour<DataManager>
 {
     private SaveData saveData;
     private JsonSaver jsonSaver;
@@ -25,10 +26,36 @@ public class DataManager : MonoBehaviour
         set => saveData.musicVolume = value;
     }
 
-    private void Awake()
+    public int TotalStars
     {
-        saveData = new SaveData();
-        jsonSaver = new JsonSaver();
+        get => saveData.totalStars;
+        set => saveData.totalStars = value;
+    }
+
+    public List<MissionObject> MissionObjects
+    {
+        get => saveData.missionObjects;
+        set => saveData.missionObjects = value;
+    }
+
+    public MissionObject FindBySceneName(string sceneName)
+    {
+        foreach (MissionObject missionObject in MissionObjects)
+        {
+            if (missionObject.sceneName == sceneName)
+                return missionObject;
+        }
+        return null;
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (Instance == this)
+        {
+            saveData = new SaveData();
+            jsonSaver = new JsonSaver();
+        }
     }
 
     public void Save()
