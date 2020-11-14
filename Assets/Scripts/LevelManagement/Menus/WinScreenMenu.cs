@@ -22,6 +22,9 @@ namespace BounceHitman.LevelManagement
         [SerializeField]
         private Image[] stars;
 
+        [SerializeField]
+        private Button nextButton;
+
         private void OnEnable()
         {
             LockAllStars();
@@ -29,12 +32,14 @@ namespace BounceHitman.LevelManagement
 
         public void SetOneStar()
         {
+            LockAllStars();
             stars[0].sprite = unlockStarSprite;
         }
 
         public void SetTwoStars()
         {
-            for(int i = 0; i < stars.Length - 1; i++)
+            LockAllStars();
+            for (int i = 0; i < stars.Length - 1; i++)
             {
                 stars[i].sprite = unlockStarSprite;
             }
@@ -42,7 +47,8 @@ namespace BounceHitman.LevelManagement
 
         public void SetThreeStars()
         {
-            foreach(Image image in stars)
+            LockAllStars();
+            foreach (Image image in stars)
             {
                 image.sprite = unlockStarSprite;
             }
@@ -71,9 +77,29 @@ namespace BounceHitman.LevelManagement
             onFadeInCompleted?.Invoke();
         }
 
+        public void SetNextButtonEnabled()
+        {
+            int totalStars = MissionObjectList.Instance.TotalStars;
+            MissionObject missionObject = MissionObjectList.Instance.FindBySceneName(LevelLoader.GetNextLevelName());
+
+            if (missionObject == null)
+            {
+                nextButton.enabled = false;
+                return;
+            }
+
+            if (totalStars < missionObject.scoreForUnlock)
+            {
+                nextButton.enabled = false;
+                return;
+            }
+
+            nextButton.enabled = true;
+        }
+
         private void SaveGame()
         {
-
+            MissionObjectList.Instance.SaveData();
         }
 
         public void OnNexLevelPressed()

@@ -1,7 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace BounceHitman.LevelManagement
 {
@@ -45,10 +47,36 @@ namespace BounceHitman.LevelManagement
 
         public static void LoadNextLevel()
         {
+            LoadLevel(GetNextLevelIndex());
+        }
+
+        public static int GetNextLevelIndex()
+        {
             int nextSceneIndex = (SceneManager.GetActiveScene().buildIndex + 1)
-                % SceneManager.sceneCountInBuildSettings;
+               % SceneManager.sceneCountInBuildSettings;
             nextSceneIndex = Mathf.Clamp(nextSceneIndex, mainMenuIndex, nextSceneIndex);
-            LoadLevel(nextSceneIndex);
+
+            return nextSceneIndex;
+        }
+
+        public static string GetNextLevelName()
+        {
+
+            return GetSceneNameByBuildIndex(GetNextLevelIndex());
+        }
+
+        public static string GetSceneNameByBuildIndex(int buildIndex)
+        {
+            return GetSceneNameFromScenePath(SceneUtility.GetScenePathByBuildIndex(buildIndex));
+        }
+
+        private static string GetSceneNameFromScenePath(string scenePath)
+        {
+            // Unity's asset paths always use '/' as a path separator
+            var sceneNameStart = scenePath.LastIndexOf("/", StringComparison.Ordinal) + 1;
+            var sceneNameEnd = scenePath.LastIndexOf(".", StringComparison.Ordinal);
+            var sceneNameLength = sceneNameEnd - sceneNameStart;
+            return scenePath.Substring(sceneNameStart, sceneNameLength);
         }
 
         public static void LoadMainMenuLevel()

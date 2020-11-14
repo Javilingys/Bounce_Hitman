@@ -225,6 +225,8 @@ public class GameManager : MonoBehaviour
 
         int currentDifference = currentScore - bestScore;
         MissionObjectList.Instance.TotalStars += currentDifference;
+
+        WinScreenMenu.Instance.SetNextButtonEnabled();
     }
 
     private bool IsPlacingAndPauseTrue()

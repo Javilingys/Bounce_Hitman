@@ -547,17 +547,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   missionObjects:
   - sceneName: Prototype
-    totalStars: 0
+    score: 0
+    scoreForUnlock: 0
     bounceCount: 4
     countFor3Star: 1
     countFor2Star: 2
     isUnlock: 1
   - sceneName: Prototype2
-    totalStars: 0
+    score: 0
+    scoreForUnlock: 3
     bounceCount: 3
     countFor3Star: 0
     countFor2Star: 0
     isUnlock: 0
+  totalStars: 0
 --- !u!4 &2001539291
 Transform:
   m_ObjectHideFlags: 0

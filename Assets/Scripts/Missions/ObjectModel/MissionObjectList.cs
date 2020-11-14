@@ -34,7 +34,7 @@ public class MissionObjectList : SingletonMonoBehaviour<MissionObjectList>
 
         foreach (MissionObject missionObject in DataManager.Instance.MissionObjects)
         {
-            FindBySceneName(missionObject.sceneName).isUnlock = true;
+            FindBySceneName(missionObject.sceneName).score = DataManager.Instance.FindBySceneName(missionObject.sceneName).score;
         }
     }
 
@@ -43,7 +43,15 @@ public class MissionObjectList : SingletonMonoBehaviour<MissionObjectList>
         if (DataManager.Instance == null || missionObjects == null)
             return;
 
+        DataManager.Instance.TotalStars = totalStars;
+        DataManager.Instance.MissionObjects = missionObjects;
 
+        DataManager.Instance.Save();
+    }
+
+    public bool IsEnoughtToUnlockLevel(string sceneName)
+    {
+        return totalStars >= FindBySceneName(sceneName).scoreForUnlock;
     }
 
     public MissionObject FindBySceneName(string sceneName)

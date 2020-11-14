@@ -67,4 +67,9 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
     {
         jsonSaver.Load(saveData);
     }
+
+    public void Delete()
+    {
+        jsonSaver.Delete();
+    }
 }

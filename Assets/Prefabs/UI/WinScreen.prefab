@@ -1792,6 +1792,7 @@ MonoBehaviour:
   - {fileID: 4863782433589469604}
   - {fileID: 5794894335006721175}
   - {fileID: 4657294001881224238}
+  nextButton: {fileID: 2065037988588011215}
 --- !u!95 &3276256052153792690
 Animator:
   serializedVersion: 3
