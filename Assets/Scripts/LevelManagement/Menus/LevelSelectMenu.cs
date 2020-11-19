@@ -144,18 +144,23 @@ public class LevelSelectMenu : Menu<LevelSelectMenu>
 
     public void OnNextPressed()
     {
+        AudioManager.Instance.PlayPageSFX();
         missionSelector.IncrementIndex();
         UpdateInfo();
     }
 
     public void OnPreviousPressed()
     {
+        AudioManager.Instance.PlayPageSFX();
         missionSelector.DecrementIndex();
         UpdateInfo();
     }
 
     public void OnPlayPressed()
     {
+        CheatMaster.Instance.CheactDeactivated();
+        DataManager.Instance.IncreaseCountToAd();
+        AudioManager.Instance.PlayClickSFX();
         StartCoroutine(OnPlayPressedRoutine(currentMission?.SceneName));
     }
 

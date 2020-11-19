@@ -15,6 +15,7 @@ namespace BounceHitman.LevelManagement
 
         public void OnResumePressed()
         {
+            AudioManager.Instance.PlayClickSFX();
             Time.timeScale = timeScaleBeforPause;
             base.OnBackPressed();
             GameManager.Instance.IsPause = false;
@@ -22,14 +23,30 @@ namespace BounceHitman.LevelManagement
 
         public void OnRestartPressed()
         {
-            Time.timeScale = 1f;
+            DataManager.Instance.IncreaseCountToAd();
+            AudioManager.Instance.PlayClickSFX();
+            Time.timeScale = 1f;          
+            CheatMaster.Instance.Tick();
             GameManager.Instance.PrepareToReloadLevel();
             LevelLoader.ReloadLevel();
             base.OnBackPressed();
         }
 
+        public void OnCheatPressed()
+        {
+            AudioManager.Instance.PlayClickSFX();
+            Time.timeScale = 1f;
+            GameManager.Instance.PrepareToReloadLevel();
+            LevelLoader.ReloadLevel();
+            base.OnBackPressed();
+            AdManager.ShowRewardedAdd(CheatMaster.Instance.CheactActivated,
+                                    CheatMaster.Instance.CheactDeactivated,
+                                    CheatMaster.Instance.CheactDeactivated);
+        }
+
         public void OnMainMenuPressed()
         {
+            AudioManager.Instance.PlayClickSFX();
             Time.timeScale = 1f;
             GameManager.Instance.PrepareToReloadLevel();
             MenuManager.Instance.CloseAllMenus();

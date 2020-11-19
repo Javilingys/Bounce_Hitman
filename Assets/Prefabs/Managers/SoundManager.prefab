@@ -1,0 +1,174 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2966205587888061585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2966205587888061587}
+  - component: {fileID: 2966205587888061584}
+  - component: {fileID: 7908391836858092956}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2966205587888061587
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2966205587888061585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2966205587888061584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2966205587888061585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3bcba480937fa54b9cc12324bf98de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+--- !u!114 &7908391836858092956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2966205587888061585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c21fa9882d3ab949b7188ff3ee9e11a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSounds:
+  - clipName: Music1
+    audioMixerGroup: {fileID: 2087981869992173072, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: 2da07d2605c85e34492275f7ded240b9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: Music2
+    audioMixerGroup: {fileID: 2087981869992173072, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: 4c70b83da85413745b792d48754743ea, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: Music3
+    audioMixerGroup: {fileID: 2087981869992173072, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: 49c5a10cf4b0d154a8e0f033f06c148d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: Music4
+    audioMixerGroup: {fileID: 2087981869992173072, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: a552566765a7acf4c9b2be46df466305, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: Music5
+    audioMixerGroup: {fileID: 2087981869992173072, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: e8ddfd81528246042821689b31c845bc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  enemyScreamSounds:
+  - clipName: grunt1
+    audioMixerGroup: {fileID: 3242876131303007753, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: 1db099703430f4b4084c3d97e111b926, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: grunt2
+    audioMixerGroup: {fileID: 3242876131303007753, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: 4a6d2a083ff8af948b1455220d6f3bb7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: maleSound
+    audioMixerGroup: {fileID: 3242876131303007753, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: 27725f7e8deaba74297edfb4860590fb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  sfxSounds:
+  - clipName: BulletBounce
+    audioMixerGroup: {fileID: 3242876131303007753, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: f025ed877f1d2c24b928cd7481712adb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: Explosion
+    audioMixerGroup: {fileID: 3242876131303007753, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: c61903d999124dc4784d055b3e3acd10, type: 3}
+    volume: 0
+    pitch: 0
+    loop: 0
+    playOnAwake: 0
+  - clipName: BulletLaunch
+    audioMixerGroup: {fileID: 3242876131303007753, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: ae4cacdb0c74ba74f8e79ce614486329, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: Reload
+    audioMixerGroup: {fileID: 3242876131303007753, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: 899a7d5bedd4b7649bec0f6ce3bc9a99, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: Shoot
+    audioMixerGroup: {fileID: 3242876131303007753, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: 9011228323ad7a44e9330d22e7d696de, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: Blood
+    audioMixerGroup: {fileID: 3242876131303007753, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: 69e93d356bc4c744cb9427f2dc7469b1, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: Click
+    audioMixerGroup: {fileID: 3242876131303007753, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: ab12d003258b6a54d9c78fe8e766fb0a, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+  - clipName: PageTurn
+    audioMixerGroup: {fileID: 3242876131303007753, guid: 11c900efb676e4940bc5a7b43717ec4a, type: 2}
+    clip: {fileID: 8300000, guid: d4acf3602748d3e4bb2baebb6f684b89, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0

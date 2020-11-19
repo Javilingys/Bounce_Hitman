@@ -6,6 +6,14 @@ namespace BounceHitman.LevelManagement
 {
     public class MainMenu : Menu<MainMenu>
     {
+        private void Start()
+        {
+            if (!AudioManager.Instance.IsBackgroundMusicStarted)
+            {
+                AudioManager.Instance.PlayMusic();
+            }
+        }
+
         //[SerializeField]
         //private float playDelay = 0.5f;
 
@@ -14,6 +22,7 @@ namespace BounceHitman.LevelManagement
 
         public void OnPlayPressed()
         {
+            AudioManager.Instance.PlayClickSFX();
             LevelSelectMenu.Open();
             //StartCoroutine(OnPlayPressedRoutine());
         }
@@ -33,16 +42,18 @@ namespace BounceHitman.LevelManagement
 
         public void OnSettingsPressed()
         {
+            AudioManager.Instance.PlayClickSFX();
             SettingsMenu.Open();
         }
 
         public void OnCreditsPressed()
         {
-
+            AudioManager.Instance.PlayClickSFX();
         }
 
         public override void OnBackPressed()
         {
+            AudioManager.Instance.PlayClickSFX();
             Application.Quit();
         }
     }

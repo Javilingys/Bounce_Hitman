@@ -14,6 +14,7 @@ namespace BounceHitman.Enemy
         {
             if (collision.gameObject.CompareTag(Tags.BULLET_TAG))
             {
+                AudioManager.Instance.PlayEnemyScreamSFX();
                 onBulletCollisionEvent?.Invoke();
             }
         }

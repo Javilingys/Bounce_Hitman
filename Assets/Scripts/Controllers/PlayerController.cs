@@ -41,7 +41,11 @@ namespace BounceHitman.Controllers
 
         public void InstantiateBullet()
         {
+            AudioManager.Instance.PlayShootSFX();
+
             playerShooter.InstantiateBullet();
+
+            CinemachineShake.Instance.ShakeCamera(15f, .1f);
         }
 
         public Transform GetBullet()

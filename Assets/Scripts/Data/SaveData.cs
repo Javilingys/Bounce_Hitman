@@ -12,16 +12,20 @@ public class SaveData
     public List<MissionObject> missionObjects;
     public int totalStars;
 
+    public int countToAd;
+
     public string hashValue;
 
     public SaveData()
     {
         masterVoulme = default;
-        sfxVolume = default;
-        musicVolume = default;
+        sfxVolume = -5f;
+        musicVolume = -15f;
 
         missionObjects = new List<MissionObject>();
         totalStars = default;
+
+        countToAd = default;
 
         hashValue = String.Empty;
     }

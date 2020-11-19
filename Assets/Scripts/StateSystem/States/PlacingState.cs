@@ -25,7 +25,10 @@ public class PlacingState : IState
 
     public void OnEnter()
     {
-        Debug.Log("PLACING");
+        if (gameManager.TutorialLevel)
+        {
+            TutorialCanvas.Instance.ShowPlaceInfoPanel();
+        }
         InputListenersRegister();
         gameManager.IsPlacingMode = true;
     }
@@ -42,6 +45,10 @@ public class PlacingState : IState
 
     private void StartDragHandler(Vector3 touchPosition)
     {
+        if (gameManager.TutorialLevel)
+        {
+            TutorialCanvas.Instance.HideAllPanels();
+        }
         playerController.PlacingProcess(touchPosition);
         isStartDragging = true;
     }

@@ -8,7 +8,14 @@ namespace BounceHitman.Misc
 
         public static T Instance
         {
-            get => instance;
+            get 
+            {
+                if (instance == null)
+                {
+                    
+                }
+                return instance;
+            }
         }
 
         protected virtual void Awake()

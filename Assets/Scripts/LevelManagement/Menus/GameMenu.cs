@@ -56,6 +56,7 @@ namespace BounceHitman.LevelManagement
         {
             if (MenuManager.Instance != null && PauseMenu.Instance != null)
             {
+                AudioManager.Instance.PlayClickSFX();
                 GameManager.Instance.IsPause = true;
                 PauseMenu.Instance.TimeScaleBeforePause = Time.timeScale;
                 Time.timeScale = 0;

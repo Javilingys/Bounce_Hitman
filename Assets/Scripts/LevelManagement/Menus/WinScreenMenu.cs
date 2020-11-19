@@ -104,18 +104,24 @@ namespace BounceHitman.LevelManagement
 
         public void OnNexLevelPressed()
         {
+            DataManager.Instance.IncreaseCountToAd();
+            AudioManager.Instance.PlayClickSFX();
             SaveGame();
             Time.timeScale = 1f;
             GameManager.Instance.PrepareToReloadLevel();
+            CheatMaster.Instance.CheactDeactivated();
             base.OnBackPressed();
             LevelLoader.LoadNextLevel();
         }
 
         public void OnRestartPressed()
         {
+            DataManager.Instance.IncreaseCountToAd();
+            AudioManager.Instance.PlayClickSFX();
             SaveGame();
             Time.timeScale = 1f;
             //MenuManager.Instance.CloseAllMenus();
+            CheatMaster.Instance.Tick();
             GameManager.Instance.PrepareToReloadLevel();
             LevelLoader.ReloadLevel();
             base.OnBackPressed();
@@ -124,9 +130,11 @@ namespace BounceHitman.LevelManagement
 
         public void OnMainMenuPressed()
         {
+            AudioManager.Instance.PlayClickSFX();
             SaveGame();
             Time.timeScale = 1f;
             GameManager.Instance.PrepareToReloadLevel();
+            CheatMaster.Instance.CheactDeactivated();
             MenuManager.Instance.CloseAllMenus();
             LevelLoader.LoadMainMenuLevel();
         }

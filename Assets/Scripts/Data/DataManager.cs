@@ -32,6 +32,23 @@ public class DataManager : SingletonMonoBehaviour<DataManager>
         set => saveData.totalStars = value;
     }
 
+    public int CountToAd
+    {
+        get => saveData.countToAd;
+        set => saveData.countToAd = value;
+    }
+
+    public void IncreaseCountToAd()
+    {
+        CountToAd++;
+        if (CountToAd >= 5)
+        {
+            CountToAd = 0;
+            AdManager.ShowStandardAd();
+        }
+        Save();
+    }
+
     public List<MissionObject> MissionObjects
     {
         get => saveData.missionObjects;

@@ -17,6 +17,9 @@ namespace BounceHitman.Bullet
         {
             if (collision.gameObject.CompareTag(Tags.WALL_TAG))
             {
+                AudioManager.Instance.PlayBounceSFX();
+
+                CinemachineShake.Instance.ShakeCamera(12f, .15f);
                 Vector2 dirNormal = collision.contacts[0].normal;
                 Vector3 dir = Vector3.Reflect(transform.right, dirNormal);
                 transform.right = dir;
@@ -25,6 +28,9 @@ namespace BounceHitman.Bullet
             }
             else if (collision.gameObject.CompareTag(Tags.ENEMY_TAG))
             {
+                AudioManager.Instance.PlayBloodSFX();
+                AudioManager.Instance.StopBulletLaunchSFX();
+
                 onBulletOnEnemyCollision?.Invoke(collision.contacts[0].point);
                 onBulletOnEnemyCollisionForCamera?.Invoke(collision.gameObject.transform);
             }

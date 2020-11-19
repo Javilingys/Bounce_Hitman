@@ -34,7 +34,6 @@ namespace BounceHitman.LevelManagement
         {
             if (MenuManager.Instance != null && Instance != null)
             {
-                Debug.Log("OPEN");
                 MenuManager.Instance.OpenMenu(Instance);
             }
         }
@@ -51,6 +50,7 @@ namespace BounceHitman.LevelManagement
         {
             if (MenuManager.Instance != null)
             {
+                AudioManager.Instance.PlayClickSFX();
                 MenuManager.Instance.CloseMenu();
             }
         }

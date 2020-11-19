@@ -38,6 +38,7 @@ namespace BounceHitman.LevelManagement
             {
                 DataManager.Instance.MasterVolume = volume;
             }
+            AudioManager.Instance.SetMasterVolume(volume);
             //PlayerPrefs.SetFloat("MasterVolume", volume);
         }
 
@@ -47,6 +48,7 @@ namespace BounceHitman.LevelManagement
             {
                 DataManager.Instance.SfxVolume = volume;
             }
+            AudioManager.Instance.SetSFXVolume(volume);
             //PlayerPrefs.SetFloat("SFXVolume", volume);
         }
 
@@ -56,6 +58,7 @@ namespace BounceHitman.LevelManagement
             {
                 DataManager.Instance.MusicVolume = volume;
             }
+            AudioManager.Instance.SetMusicVolume(volume);
             //PlayerPrefs.SetFloat("MusicVolume", volume);
         }
 
@@ -80,9 +83,10 @@ namespace BounceHitman.LevelManagement
             masterVolumeSlider.value = DataManager.Instance.MasterVolume;
             sfxVolumeSlider.value = DataManager.Instance.SfxVolume;
             musicVolumeSlider.value = DataManager.Instance.MusicVolume;
-            //masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume");
-            //sfxVolumeSlider.value = PlayerPrefs.GetFloat("SFXVolume");
-            //musicVolumeSlider.value = PlayerPrefs.GetFloat("MusicVolume");
+
+            AudioManager.Instance.SetMasterVolume(DataManager.Instance.MasterVolume);
+            AudioManager.Instance.SetSFXVolume(DataManager.Instance.SfxVolume);
+            AudioManager.Instance.SetMusicVolume(DataManager.Instance.MusicVolume);
         }
     }
 }

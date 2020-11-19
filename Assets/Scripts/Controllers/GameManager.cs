@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    [SerializeField]
+    private bool tutorialLevel = false;
+    public bool TutorialLevel { get => tutorialLevel; }
+
     public static event Action<int> onBountCountUpdate;
 
     [SerializeField]

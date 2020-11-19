@@ -25,6 +25,11 @@ public class AimingState : IState
 
     public void OnEnter()
     {
+        if (gameManager.TutorialLevel)
+        {
+            TutorialCanvas.Instance.ShowAimInfoPanel();
+        }
+        AudioManager.Instance.PlayReloadSFX();
         InputListenersRegister();
     }
 
@@ -39,6 +44,10 @@ public class AimingState : IState
 
     private void StartDragHandler(Vector3 touchPosition)
     {
+        if (gameManager.TutorialLevel)
+        {
+            TutorialCanvas.Instance.HideAllPanels();
+        }
         playerController.AimingProcess(touchPosition);
         isStartDragging = true;
     }

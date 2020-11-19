@@ -14,6 +14,8 @@ namespace BounceHitman.Player
         private float laserDistance = 100;
         [SerializeField]
         private int reflections = 5;
+        [SerializeField]
+        private int cheatReflections = 0;
 
         private LineRenderer laserRenderer = null;
         private Vector3 pos = new Vector3();
@@ -70,9 +72,20 @@ namespace BounceHitman.Player
                     laserRenderer.SetPosition(countLaser - 1, pos + (dir.normalized * laserDistance));
                     loopActive = false;
                 }
-                if (countLaser > reflections)
+               
+                if (CheatMaster.Instance.IsCheatActive)
                 {
-                    loopActive = false;
+                    if (countLaser > cheatReflections)
+                    {
+                        loopActive = false;
+                    }
+                }
+                else if (!CheatMaster.Instance.IsCheatActive)
+                {
+                    if (countLaser > reflections)
+                    {
+                        loopActive = false;
+                    }
                 }
             }
         }

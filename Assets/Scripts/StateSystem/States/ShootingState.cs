@@ -17,6 +17,8 @@ public class ShootingState : IState
         gameManager.CameraManager.TargetUpdate(gameManager.PlayerController.GetBullet());
         BulletCollisionHandler.onBulletOnEnemyCollisionForCamera += EnemyHit;
         TimeManager.onExitSlowMotion += OpenWinScreen;
+
+        AudioManager.Instance.PlayBulletLaunchSFX();
     }
 
     public void OnExit()

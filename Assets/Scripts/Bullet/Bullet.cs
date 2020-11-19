@@ -62,6 +62,9 @@ namespace BounceHitman.Bullet
 
             if (currentBounceCoune >= maxBounceCount)
             {
+                AudioManager.Instance.StopBulletLaunchSFX();
+                AudioManager.Instance.PlayExplosionSFX();
+
                 WinScreenMenu.Open();
                 WinScreenMenu.Instance.SetLoseText();
                 Destroy(gameObject);
@@ -76,6 +79,8 @@ namespace BounceHitman.Bullet
 
         void InnerDestroy()
         {
+            AudioManager.Instance.StopBulletLaunchSFX();
+
             Destroy(gameObject);
         }
     }

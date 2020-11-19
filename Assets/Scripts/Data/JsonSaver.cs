@@ -50,7 +50,10 @@ public class JsonSaver
                 }
                 else
                 {
-                    Debug.LogWarning("Your hacked!");
+                    data.countToAd = 4;
+                    data.masterVoulme = -40f;
+                    data.musicVolume = -40f;
+                    data.sfxVolume = -40f;
                 }
             }
             return true;

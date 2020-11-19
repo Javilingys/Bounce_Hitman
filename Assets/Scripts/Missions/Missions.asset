@@ -16,10 +16,15 @@ MonoBehaviour:
   - name: Level1
     id: L1
     description: Level One)
-    sceneName: Prototype
+    sceneName: Level1
     image: {fileID: 21300000, guid: f050b492e03119344b04cf01a3486662, type: 3}
   - name: Level2
     id: L2
     description: Level One)
-    sceneName: Prototype2
+    sceneName: Level2
+    image: {fileID: 21300000, guid: f050b492e03119344b04cf01a3486662, type: 3}
+  - name: Level3
+    id: L3
+    description: Level One)
+    sceneName: Level3
     image: {fileID: 21300000, guid: f050b492e03119344b04cf01a3486662, type: 3}
