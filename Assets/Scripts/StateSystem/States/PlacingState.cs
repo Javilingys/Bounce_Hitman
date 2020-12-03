@@ -27,7 +27,8 @@ public class PlacingState : IState
     {
         if (gameManager.TutorialLevel)
         {
-            TutorialCanvas.Instance.ShowPlaceInfoPanel();
+            TutorialCanvas tutorialCanvas = GameObject.FindObjectOfType<TutorialCanvas>();
+            tutorialCanvas.ShowPlaceInfoPanel();
         }
         InputListenersRegister();
         gameManager.IsPlacingMode = true;

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System;
 
 namespace BounceHitman.Misc
 {
@@ -10,10 +11,6 @@ namespace BounceHitman.Misc
         {
             get 
             {
-                if (instance == null)
-                {
-                    
-                }
                 return instance;
             }
         }

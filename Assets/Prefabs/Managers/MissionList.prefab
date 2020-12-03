@@ -58,4 +58,60 @@ MonoBehaviour:
     countFor3Star: 1
     countFor2Star: 2
     isUnlock: 0
+  - sceneName: Level3
+    score: 0
+    scoreForUnlock: 6
+    bounceCount: 6
+    countFor3Star: 2
+    countFor2Star: 3
+    isUnlock: 0
+  - sceneName: Level4
+    score: 0
+    scoreForUnlock: 9
+    bounceCount: 8
+    countFor3Star: 2
+    countFor2Star: 4
+    isUnlock: 0
+  - sceneName: Level5
+    score: 0
+    scoreForUnlock: 12
+    bounceCount: 10
+    countFor3Star: 4
+    countFor2Star: 5
+    isUnlock: 0
+  - sceneName: Level6
+    score: 0
+    scoreForUnlock: 15
+    bounceCount: 10
+    countFor3Star: 4
+    countFor2Star: 5
+    isUnlock: 0
+  - sceneName: Level7
+    score: 0
+    scoreForUnlock: 18
+    bounceCount: 12
+    countFor3Star: 4
+    countFor2Star: 5
+    isUnlock: 0
+  - sceneName: Level8
+    score: 0
+    scoreForUnlock: 21
+    bounceCount: 12
+    countFor3Star: 3
+    countFor2Star: 4
+    isUnlock: 0
+  - sceneName: Level9
+    score: 0
+    scoreForUnlock: 24
+    bounceCount: 3
+    countFor3Star: 1
+    countFor2Star: 2
+    isUnlock: 0
+  - sceneName: Level10
+    score: 0
+    scoreForUnlock: 27
+    bounceCount: 15
+    countFor3Star: 1
+    countFor2Star: 2
+    isUnlock: 0
   totalStars: 0

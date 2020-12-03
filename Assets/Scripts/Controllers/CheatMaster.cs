@@ -14,7 +14,7 @@ public class CheatMaster : SingletonMonoBehaviour<CheatMaster>
 
     private int currentCountOfRounds = 0;
 
-    protected override void Awake()
+    protected override  void Awake()
     {
         base.Awake();
         if (Instance == this)

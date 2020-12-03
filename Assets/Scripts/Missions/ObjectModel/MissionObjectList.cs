@@ -9,7 +9,10 @@ public class MissionObjectList : SingletonMonoBehaviour<MissionObjectList>
     private List<MissionObject> missionObjects = new List<MissionObject>();
 
     [SerializeField]
+    [HideInInspector]
     private int totalStars = 0;
+
+    private DataManager dataManager;
 
     public int TotalStars { get => totalStars; set => totalStars = value; }
 
@@ -19,14 +22,20 @@ public class MissionObjectList : SingletonMonoBehaviour<MissionObjectList>
         if (Instance == this)
         {
             DontDestroyOnLoad(gameObject);
-            LoadData();
         }
+    }
+
+    private void Start()
+    {
+        LoadData();
     }
 
     public void LoadData()
     {
         if (DataManager.Instance == null || missionObjects == null)
+        {
             return;
+        }
 
         DataManager.Instance.Load();
 
